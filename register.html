@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniConnect | Student Registration</title>
+<meta name="description" content="Register for a new UniConnect student account: personal details, course enrolment, account security and the one-off joining fee.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%230b4f9c%27/%3E%3Ctext x=%2750%27 y=%2766%27 font-size=%2748%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 fill=%27%23ffffff%27 text-anchor=%27middle%27%3EUC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a href="index.html" class="brand">
+      <span class="brand__mark" aria-hidden="true">UC</span>
+      <span data-i18n="brand_name">UniConnect</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html" data-i18n="nav_login">Login</a>
+      <a href="register.html" aria-current="page" data-i18n="nav_register">Register</a>
+    </nav>
+
+    <div class="a11y-toolbar" role="group" aria-label="Accessibility settings">
+      <button type="button" id="font-decrease" aria-label="Decrease text size">A-</button>
+      <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+      <button type="button" id="contrast-toggle" aria-pressed="false" data-i18n="a11y_contrast">High contrast</button>
+      <label for="lang-select" class="visually-hidden" data-i18n="a11y_lang_label">Language</label>
+      <select id="lang-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="page-shell">
+  <div class="auth-card auth-card--wide" style="margin: 0 auto;">
+    <div class="card-header">
+      <h1 data-i18n="register_title">Create your student account</h1>
+      <p data-i18n="register_subtitle">Takes about five minutes. Fields marked * are required.</p>
+    </div>
+
+    <div id="form-alert" class="alert" role="alert"></div>
+
+    <!-- Progress indicator -->
+    <ol class="visually-hidden" id="step-status" aria-live="polite"></ol>
+
+    <form id="register-form" novalidate autocomplete="on">
+
+      <!-- ===================== 1. Personal details ===================== -->
+      <fieldset>
+        <legend data-i18n="section_personal">1 · Personal details</legend>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-full-name">
+            <label for="full-name" data-i18n="label_full_name">Full legal name<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="full-name" name="fullName" autocomplete="name" aria-required="true" aria-describedby="full-name-error">
+            <span class="error-msg" id="full-name-error">Please enter your full name.</span>
+          </div>
+
+          <div class="field" id="field-student-id">
+            <label for="student-id" data-i18n="label_student_id">Student ID<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="student-id" name="studentId" aria-required="true" aria-describedby="student-id-error student-id-hint" placeholder="e.g. UC2026001">
+            <span class="hint" id="student-id-hint">Provided in your offer letter. Format: UC + year + 3 digits.</span>
+            <span class="error-msg" id="student-id-error">Enter a valid student ID (e.g. UC2026001).</span>
+          </div>
+        </div>
+
+        <div class="form-row form-row--2">
+          <div class="field">
+            <label for="dob">Date of birth<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="date" id="dob" name="dob" autocomplete="bday" aria-required="true" aria-describedby="dob-error">
+            <span class="error-msg" id="dob-error">Enter your date of birth.</span>
+          </div>
+          <div class="field">
+            <label for="gender">Gender (optional)</label>
+            <select id="gender" name="gender">
+              <option value="">Prefer not to say</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="nonbinary">Non-binary</option>
+              <option value="self-describe">Self-described</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ===================== 2. Contact details ===================== -->
+      <fieldset>
+        <legend data-i18n="section_contact">2 · Contact details</legend>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-email">
+            <label for="email" data-i18n="label_email">Email address<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-required="true" aria-describedby="email-error">
+            <span class="error-msg" id="email-error">Enter a valid email address.</span>
+          </div>
+          <div class="field" id="field-phone">
+            <label for="phone" data-i18n="label_phone">Phone number<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" aria-required="true" aria-describedby="phone-error" placeholder="e.g. 0412 345 678">
+            <span class="error-msg" id="phone-error">Enter a valid phone number.</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field" id="field-address">
+            <label for="address" data-i18n="label_address">Mailing address<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="address" name="address" autocomplete="street-address" aria-required="true" aria-describedby="address-error">
+            <span class="error-msg" id="address-error">Enter your mailing address.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ===================== 3. Course enrolment ===================== -->
+      <fieldset>
+        <legend data-i18n="section_course">3 · Course enrolment</legend>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-course">
+            <label for="course" data-i18n="label_course">Course<span class="required-mark" aria-hidden="true">*</span></label>
+            <select id="course" name="course" aria-required="true" aria-describedby="course-error">
+              <option value="">Select a course…</option>
+              <option value="bit">Bachelor of Information Technology</option>
+              <option value="bba">Bachelor of Business Administration</option>
+              <option value="bcom">Bachelor of Commerce</option>
+              <option value="mit">Master of Information Technology</option>
+              <option value="mba">Master of Business Administration</option>
+            </select>
+            <span class="error-msg" id="course-error">Select the course you are enrolling in.</span>
+          </div>
+
+          <div class="field" id="field-intake">
+            <label for="intake">Intake term<span class="required-mark" aria-hidden="true">*</span></label>
+            <select id="intake" name="intake" aria-required="true" aria-describedby="intake-error">
+              <option value="">Select intake…</option>
+              <option value="term1-2027">Term 1, 2027</option>
+              <option value="term2-2027">Term 2, 2027</option>
+              <option value="term3-2027">Term 3, 2027</option>
+            </select>
+            <span class="error-msg" id="intake-error">Select an intake term.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="study-mode">Study mode</label>
+          <select id="study-mode" name="studyMode">
+            <option value="full-time">Full-time (on campus)</option>
+            <option value="part-time">Part-time (on campus)</option>
+            <option value="online">Online</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- ===================== 4. Account security ===================== -->
+      <fieldset>
+        <legend data-i18n="section_account">4 · Set up your password</legend>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-password">
+            <label for="password" data-i18n="label_password">Password<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="password" id="password" name="password" autocomplete="new-password" aria-required="true"
+                   aria-describedby="password-hint password-error">
+            <div class="password-strength" aria-hidden="true"><div class="password-strength__bar" id="password-strength-bar"></div></div>
+            <span class="hint" id="password-hint" data-i18n="password_rule_hint">At least 8 characters, including one number and one symbol (e.g. Course#2027).</span>
+            <span class="error-msg" id="password-error">Password must be 8+ characters and include a number and a symbol.</span>
+          </div>
+
+          <div class="field" id="field-confirm-password">
+            <label for="confirm-password" data-i18n="label_confirm_password">Confirm password<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="password" id="confirm-password" name="confirmPassword" autocomplete="new-password" aria-required="true" aria-describedby="confirm-password-error">
+            <span class="error-msg" id="confirm-password-error">Passwords do not match.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" id="toggle-password-visibility" aria-pressed="false">Show passwords</button>
+      </fieldset>
+
+      <!-- ===================== 5. Security questions ===================== -->
+      <fieldset>
+        <legend data-i18n="section_security">5 · Security questions (for account recovery)</legend>
+        <p class="hint mt-0">Choose two different questions. You'll need these answers if you ever forget your password.</p>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-security-q1">
+            <label for="security-q1" data-i18n="label_security_q1">Security question 1<span class="required-mark" aria-hidden="true">*</span></label>
+            <select id="security-q1" name="securityQ1" aria-required="true" aria-describedby="security-q1-error">
+              <option value="">Select a question…</option>
+              <option value="pet">What was the name of your first pet?</option>
+              <option value="city">In what city were you born?</option>
+              <option value="school">What was the name of your primary school?</option>
+              <option value="book">What is your favourite book?</option>
+            </select>
+            <span class="error-msg" id="security-q1-error">Choose a security question.</span>
+          </div>
+          <div class="field" id="field-security-a1">
+            <label for="security-a1" data-i18n="label_security_a1">Answer<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="security-a1" name="securityA1" aria-required="true" aria-describedby="security-a1-error">
+            <span class="error-msg" id="security-a1-error">Enter an answer.</span>
+          </div>
+        </div>
+
+        <div class="form-row form-row--2">
+          <div class="field" id="field-security-q2">
+            <label for="security-q2" data-i18n="label_security_q2">Security question 2<span class="required-mark" aria-hidden="true">*</span></label>
+            <select id="security-q2" name="securityQ2" aria-required="true" aria-describedby="security-q2-error">
+              <option value="">Select a question…</option>
+              <option value="city">In what city were you born?</option>
+              <option value="pet">What was the name of your first pet?</option>
+              <option value="teacher">Who was your favourite teacher?</option>
+              <option value="food">What is your favourite food?</option>
+            </select>
+            <span class="error-msg" id="security-q2-error">Choose a different security question.</span>
+          </div>
+          <div class="field" id="field-security-a2">
+            <label for="security-a2" data-i18n="label_security_a2">Answer<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="security-a2" name="securityA2" aria-required="true" aria-describedby="security-a2-error">
+            <span class="error-msg" id="security-a2-error">Enter an answer.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ===================== 6. Joining fee / payment ===================== -->
+      <fieldset>
+        <legend data-i18n="section_payment">6 · Joining fee — $10.00 AUD</legend>
+        <div class="alert alert-info is-visible" data-i18n="payment_note">
+          This is a UX prototype only: no payment is actually processed and card details are never stored or transmitted anywhere. Please do not enter real card information.
+        </div>
+
+        <div class="form-row">
+          <div class="field" id="field-card-name">
+            <label for="card-name" data-i18n="label_card_name">Name on card<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="card-name" name="cardName" autocomplete="cc-name" aria-required="true" aria-describedby="card-name-error">
+            <span class="error-msg" id="card-name-error">Enter the name on the card.</span>
+          </div>
+        </div>
+
+        <div class="form-row form-row--3">
+          <div class="field" id="field-card-number">
+            <label for="card-number" data-i18n="label_card_number">Card number<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="card-number" name="cardNumber" inputmode="numeric" autocomplete="cc-number"
+                   maxlength="19" placeholder="1234 5678 9012 3456" aria-required="true" aria-describedby="card-number-error">
+            <span class="error-msg" id="card-number-error">Enter a 16-digit card number.</span>
+          </div>
+          <div class="field" id="field-card-expiry">
+            <label for="card-expiry" data-i18n="label_card_expiry">Expiry (MM/YY)<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="card-expiry" name="cardExpiry" inputmode="numeric" autocomplete="cc-exp"
+                   maxlength="5" placeholder="MM/YY" aria-required="true" aria-describedby="card-expiry-error">
+            <span class="error-msg" id="card-expiry-error">Enter a valid future expiry date.</span>
+          </div>
+          <div class="field" id="field-card-cvv">
+            <label for="card-cvv" data-i18n="label_card_cvv">CVV<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="card-cvv" name="cardCvv" inputmode="numeric" autocomplete="cc-csc"
+                   maxlength="4" placeholder="123" aria-required="true" aria-describedby="card-cvv-error">
+            <span class="error-msg" id="card-cvv-error">Enter a 3 or 4 digit CVV.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ===================== 7. Consent & preferences ===================== -->
+      <fieldset>
+        <legend data-i18n="section_consent">7 · Consent &amp; preferences</legend>
+
+        <div class="checkbox-row" id="field-consent-policy">
+          <input type="checkbox" id="consent-policy" name="consentPolicy" aria-required="true" aria-describedby="consent-policy-error">
+          <label for="consent-policy" data-i18n="consent_policy">
+            I have read and agree to UniConnect's <a href="#" target="_blank" rel="noopener">Data Usage &amp; Privacy Policy</a> and <a href="#" target="_blank" rel="noopener">Terms of Enrolment</a>.<span class="required-mark" aria-hidden="true">*</span>
+          </label>
+        </div>
+        <span class="error-msg" id="consent-policy-error" style="display:block;margin:-0.5rem 0 0.85rem 1.7rem;">You must accept the policy to continue.</span>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="consent-marketing" name="consentMarketing">
+          <label for="consent-marketing" data-i18n="consent_marketing">Email me about events, assignment deadlines and new courses (optional — you can change this anytime in Settings).</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_create_account">Create account &amp; pay $10 joining fee</button>
+
+      <p class="auth-footer-link">
+        <span data-i18n="have_account">Already registered?</span>
+        <a href="index.html" data-i18n="sign_in">Sign in</a>
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>UniConnect Student Portal — UX prototype for ICT211 Assessment 2. Not a real login system; no data leaves this browser.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

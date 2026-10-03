@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniConnect | Student Login</title>
+<meta name="description" content="Sign in to the UniConnect student portal to access your courses, grades and announcements.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%230b4f9c%27/%3E%3Ctext x=%2750%27 y=%2766%27 font-size=%2748%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 fill=%27%23ffffff%27 text-anchor=%27middle%27%3EUC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a href="index.html" class="brand">
+      <span class="brand__mark" aria-hidden="true">UC</span>
+      <span data-i18n="brand_name">UniConnect</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html" aria-current="page" data-i18n="nav_login">Login</a>
+      <a href="register.html" data-i18n="nav_register">Register</a>
+    </nav>
+
+    <div class="a11y-toolbar" role="group" aria-label="Accessibility settings">
+      <button type="button" id="font-decrease" aria-label="Decrease text size">A-</button>
+      <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+      <button type="button" id="contrast-toggle" aria-pressed="false" data-i18n="a11y_contrast">High contrast</button>
+      <label for="lang-select" class="visually-hidden" data-i18n="a11y_lang_label">Language</label>
+      <select id="lang-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="auth-shell">
+  <div class="auth-card">
+    <div class="card-header">
+      <h1 data-i18n="login_title">Welcome back</h1>
+      <p data-i18n="login_subtitle">Sign in to access your courses, grades and announcements.</p>
+    </div>
+
+    <div id="form-alert" class="alert" role="alert"></div>
+
+    <!-- STEP 1: credentials -->
+    <form id="login-form" novalidate>
+      <div class="form-row">
+        <div class="field" id="field-student-id">
+          <label for="student-id" data-i18n="label_student_id">Student ID or email<span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="text" id="student-id" name="studentId" autocomplete="username"
+                 aria-required="true" aria-describedby="student-id-error"
+                 placeholder="e.g. UC2026001 or you@student.uniconnect.edu">
+          <span class="error-msg" id="student-id-error">Enter your student ID or email address.</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field" id="field-password">
+          <label for="password" data-i18n="label_password">Password<span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="password" id="password" name="password" autocomplete="current-password"
+                 aria-required="true" aria-describedby="password-error">
+          <span class="error-msg" id="password-error">Enter your password.</span>
+        </div>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="remember-me" name="rememberMe">
+        <label for="remember-me" data-i18n="remember_me">Keep me signed in on this device</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_login">Sign in</button>
+
+      <p class="auth-footer-link">
+        <a href="#" id="forgot-password-link" data-i18n="forgot_password">Forgotten your password?</a>
+      </p>
+    </form>
+
+    <!-- STEP 2: security-question recovery (hidden until requested) -->
+    <div id="recovery-panel" hidden>
+      <div class="divider" data-i18n="security_check_title">Account recovery</div>
+      <form id="recovery-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="recovery-id">Student ID or email<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="recovery-id" name="recoveryId" aria-required="true">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="recovery-answer" data-i18n="label_security_answer">Answer to your security question<span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="recovery-answer" name="recoveryAnswer" aria-required="true">
+            <span class="hint" id="recovery-question-hint">We'll show your chosen security question here once your ID is recognised.</span>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-secondary btn-block" data-i18n="btn_verify">Verify and reset password</button>
+      </form>
+    </div>
+
+    <div class="auth-footer-link">
+      <span data-i18n="no_account">Don't have an account?</span>
+      <a href="register.html" data-i18n="create_one">Create one</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>UniConnect Student Portal — UX prototype for ICT211 Assessment 2. Not a real login system; no data leaves this browser.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
