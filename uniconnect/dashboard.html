@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniConnect | Dashboard</title>
+<meta name="description" content="Your UniConnect student dashboard: courses, grades, announcements and account settings.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%230b4f9c%27/%3E%3Ctext x=%2750%27 y=%2766%27 font-size=%2748%27 font-family=%27Arial,sans-serif%27 font-weight=%27700%27 fill=%27%23ffffff%27 text-anchor=%27middle%27%3EUC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__bar">
+    <a href="dashboard.html" class="brand">
+      <span class="brand__mark" aria-hidden="true">UC</span>
+      <span data-i18n="brand_name">UniConnect</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="dashboard.html" aria-current="page" data-i18n="nav_dashboard">Dashboard</a>
+      <a href="#courses-card" data-i18n="nav_courses">Courses</a>
+      <a href="#grades-card" data-i18n="nav_grades">Grades</a>
+      <a href="#announcements-card" data-i18n="nav_announcements">Announcements</a>
+      <a href="index.html" id="logout-link" data-i18n="nav_logout">Log out</a>
+    </nav>
+
+    <div class="a11y-toolbar" role="group" aria-label="Accessibility settings">
+      <button type="button" id="font-decrease" aria-label="Decrease text size">A-</button>
+      <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+      <button type="button" id="contrast-toggle" aria-pressed="false" data-i18n="a11y_contrast">High contrast</button>
+      <label for="lang-select" class="visually-hidden" data-i18n="a11y_lang_label">Language</label>
+      <select id="lang-select" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="page-shell">
+
+  <div class="welcome-banner">
+    <div>
+      <h1 id="welcome-name" data-i18n="welcome_back">Welcome back, Student</h1>
+      <p id="welcome-course">Bachelor of Information Technology · Full-time</p>
+    </div>
+    <div class="badge-pill" id="badge-progress-pill">
+      <span class="badge-pill__icon" aria-hidden="true">★</span>
+      <span id="badge-progress-text" data-i18n="badge_progress">3 / 5 courses completed</span>
+    </div>
+  </div>
+
+  <div id="dashboard-alert" class="alert" role="status"></div>
+
+  <form class="search-bar" id="search-form" role="search">
+    <label for="dashboard-search" class="visually-hidden">Search courses, grades or announcements</label>
+    <input type="search" id="dashboard-search" data-i18n-placeholder="search_placeholder" placeholder="Search courses, grades or announcements…">
+    <select id="search-filter" aria-label="Filter search by category">
+      <option value="all" data-i18n="filter_all">All</option>
+      <option value="courses" data-i18n="filter_courses">Courses</option>
+      <option value="grades" data-i18n="filter_grades">Grades</option>
+      <option value="announcements" data-i18n="filter_announcements">Announcements</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  <div class="dashboard-grid">
+
+    <!-- Courses -->
+    <section class="card card--span2" id="courses-card" aria-labelledby="courses-title">
+      <h2 id="courses-title" data-i18n="courses_title">My Courses</h2>
+      <ul class="list-plain" id="courses-list"></ul>
+    </section>
+
+    <!-- Digital badge -->
+    <section class="card" id="badge-card" aria-labelledby="badge-title">
+      <h2 id="badge-title" data-i18n="badge_title">Digital Achievement Badge</h2>
+      <p class="text-muted" data-i18n="badge_desc">Complete 5 courses to unlock your UniConnect digital badge, shareable on LinkedIn and your student profile.</p>
+      <div class="progress-track" aria-hidden="true"><div class="progress-track__bar" id="badge-progress-bar" style="width:60%"></div></div>
+      <p class="text-muted" id="badge-status-text">3 of 5 courses completed — 2 to go!</p>
+      <button type="button" class="btn btn-secondary btn-block" id="badge-claim-btn" disabled>Badge locked</button>
+    </section>
+
+    <!-- Grades -->
+    <section class="card" id="grades-card" aria-labelledby="grades-title">
+      <h2 id="grades-title" data-i18n="grades_title">Grades</h2>
+      <ul class="list-plain" id="grades-list"></ul>
+    </section>
+
+    <!-- Announcements -->
+    <section class="card card--span2" id="announcements-card" aria-labelledby="announcements-title">
+      <h2 id="announcements-title" data-i18n="announcements_title">Announcements</h2>
+      <ul class="list-plain" id="announcements-list"></ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>UniConnect Student Portal — UX prototype for ICT211 Assessment 2. All course, grade and announcement data shown is sample data.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
